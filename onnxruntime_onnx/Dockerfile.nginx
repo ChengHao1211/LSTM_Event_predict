@@ -1,0 +1,22 @@
+# Dockerfile.nginx
+FROM nginx:1.24-alpine
+
+# 安装openssl
+RUN apk add --no-cache openssl
+
+# 复制nginx配置
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# 创建SSL证书目录
+RUN mkdir -p /etc/nginx/ssl
+
+# 生成自签名证书
+RUN openssl genrsa -out /etc/nginx/ssl/server.key 2048 && \
+    openssl req -new -key /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.csr \
+    -subj "/CN=localhost/O=Dev/C=TW" && \
+    openssl x509 -req -days 365 -in /etc/nginx/ssl/server.csr \
+    -signkey /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt && \
+    rm /etc/nginx/ssl/server.csr
+
+# 暴露443端口
+EXPOSE 443

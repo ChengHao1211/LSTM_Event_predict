@@ -1,0 +1,71 @@
+{
+    "model_info": {
+        "input_size": 25,
+        "num_classes": 3,
+        "target_classes": [
+            "addtocart",
+            "transaction",
+            "view"
+        ]
+    },
+    "preprocessing": {
+        "categorical_features": [
+            "prev_event",
+            "prev_event_2",
+            "prev_event_3",
+            "time_diff_category"
+        ],
+        "numerical_features": [
+            "hour",
+            "day",
+            "weekday",
+            "is_weekend",
+            "time_diff",
+            "cart_abandonment",
+            "high_activity_no_purchase",
+            "session_addtocart",
+            "session_transaction",
+            "session_view",
+            "session_total_events",
+            "user_addtocart",
+            "user_transaction",
+            "user_view",
+            "user_view_to_cart_rate",
+            "user_cart_to_transaction_rate",
+            "item_addtocart",
+            "item_transaction",
+            "item_view",
+            "item_popularity",
+            "item_view_to_cart_rate"
+        ]
+    },
+    "encoder_classes": {
+        "prev_event": [
+            "addtocart",
+            "transaction",
+            "unknown",
+            "view"
+        ],
+        "prev_event_2": [
+            "addtocart",
+            "transaction",
+            "unknown",
+            "view"
+        ],
+        "prev_event_3": [
+            "addtocart",
+            "transaction",
+            "unknown",
+            "view"
+        ],
+        "time_diff_category": [
+            "1-5min",
+            "15-30min",
+            "30-60min",
+            "5-15min",
+            "<1min",
+            ">60min",
+            "nan"
+        ]
+    }
+}
